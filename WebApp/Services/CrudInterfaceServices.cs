@@ -8,7 +8,7 @@ public class CrudInterfaceServices : CRUDInterface
     public List<Boot> GetAllBoats()
     {
         List<Boot> Boote = new List<Boot>();
-        string connectionString = ConnectionString(); 
+        string connectionString = ConnectionString();
 
         using (SqliteConnection connection = new SqliteConnection(connectionString))
         {
@@ -18,10 +18,11 @@ public class CrudInterfaceServices : CRUDInterface
             while (reader.Read())
             {
                 Boot boot = Mapping.MappingBoot(reader);
-                
+
                 Boote.Add(boot);
             }
         }
+
         return Boote;
     }
 
@@ -36,21 +37,28 @@ public class CrudInterfaceServices : CRUDInterface
             SqliteDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-              boot = Mapping.MappingBoot(reader);
+                boot = Mapping.MappingBoot(reader);
             }
         }
+
         return boot;
     }
 
     public bool DeleteBoat(int id)
     {
         string connectionString = ConnectionString();
+
         using (SqliteConnection connection = new SqliteConnection(connectionString))
         {
             connection.Open();
-            SqliteCommand command = new SqliteCommand($"DELETE FROM Hafen WHERE bid = {id}", connection);
-            command.ExecuteNonQuery();
+            string deleteQuery = "DELETE FROM Hafen WHERE bid = @BoatId";
+            using (SqliteCommand command = new SqliteCommand(deleteQuery, connection))
+            {
+                command.Parameters.AddWithValue("@BoatId", id);
+                command.ExecuteNonQuery();
+            }
         }
+
         return true;
     }
 
@@ -62,7 +70,8 @@ public class CrudInterfaceServices : CRUDInterface
         {
             connection.Open();
 
-            string query = "UPDATE Hafen SET Name = @Name, Laenge = @Laenge, Motorleistung = @Motorleistung, Segelboot = @Segelboot, Tiefgang = @Tiefgang, Baujahr = @Baujahr WHERE bid = @Bid";
+            string query =
+                "UPDATE Hafen SET Name = @Name, Laenge = @Laenge, Motorleistung = @Motorleistung, Segelboot = @Segelboot, Tiefgang = @Tiefgang, Baujahr = @Baujahr WHERE bid = @Bid";
 
             using (SqliteCommand command = new SqliteCommand(query, connection))
             {
@@ -87,7 +96,8 @@ public class CrudInterfaceServices : CRUDInterface
         using (SqliteConnection connection = new SqliteConnection(connectionString))
         {
             connection.Open();
-            string query = "INSERT INTO Hafen (Name, Laenge, Motorleistung, Segelboot, Tiefgang, Baujahr) VALUES (@Name, @Laenge, @Motorleistung, @Segelboot, @Tiefgang, @Baujahr)";
+            string query =
+                "INSERT INTO Hafen (name, laenge,  motoleistung, ist_segel, tiefgang, baujahr) VALUES (@Name, @Laenge, @Motorleistung, @Segelboot, @Tiefgang, @Baujahr)";
             using (SqliteCommand command = new SqliteCommand(query, connection))
             {
                 command.Parameters.AddWithValue("@Name", boot.Name);
@@ -99,7 +109,8 @@ public class CrudInterfaceServices : CRUDInterface
                 command.ExecuteNonQuery();
             }
         }
-        return boot.Bid ;
+
+        return boot.Bid;
     }
 
     public string ConnectionString()

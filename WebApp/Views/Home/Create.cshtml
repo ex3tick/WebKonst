@@ -1,1 +1,77 @@
-﻿
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boat Form</title>
+</head>
+<body>
+
+    <form id="boatForm">
+        <label for="NameInput">Name:</label>
+        <input type="text" id="NameInput" required><br>
+
+        <label for="LaengeInput">Länge:</label>
+        <input type="number" id="LaengeInput" required><br>
+
+        <label for="IstSeglerInput">Ist Segler:</label>
+        <input type="checkbox" id="IstSeglerInput"><br>
+
+        <label for="MotorleistungInput">Motorleistung:</label>
+        <input type="number" id="MotorleistungInput" required><br>
+
+        <label for="TiefgangInput">Tiefgang:</label>
+        <input type="number" id="TiefgangInput" required><br>
+
+        <label for="BaujahrInput">Baujahr:</label>
+        <input type="text" id="BaujahrInput" required><br>
+
+        <button type="button" id="CreateButton">Create Boat</button>
+    </form>
+
+    <script>
+        window.onload = function() {
+            document.getElementById('CreateButton').addEventListener('click', function() {
+            
+                var name = document.getElementById('NameInput').value;
+                var laenge = parseFloat(document.getElementById('LaengeInput').value);
+                var istSegler = document.getElementById('IstSeglerInput').checked? 1:0;
+                var motorleistung = parseInt(document.getElementById('MotorleistungInput').value);
+                var tiefgang = parseFloat(document.getElementById('TiefgangInput').value);
+                var baujahr = document.getElementById('BaujahrInput').value;
+
+                var boat = {
+                    Name: name,
+                    Laenge: laenge,
+                    IstSegler: istSegler,
+                    Motorleistung: motorleistung,
+                    Tiefgang: tiefgang,
+                    Baujahr: baujahr
+                };
+
+                fetch('/Home/AddBoat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(boat),
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Success:', data);
+                    // Hier kannst du nach dem erfolgreichen Hinzufügen des Bootes weitere Aktionen durchführen, z.B. eine Weiterleitung oder Aktualisierung der Anzeige.
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            });
+        }
+    </script>
+
+</body>
+</html>

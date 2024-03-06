@@ -9,4 +9,19 @@ public class Boot
     public bool Segelboot { get; set; }
     public double Tiefgang { get; set; }
     public string Baujahr { get; set; }
+
+    public Boot()
+    {
+        
+    }
+    public Boot(int bid, string name, double laenge, int? motorleistung, bool segelboot, double tiefgang, string baujahr)
+    {
+        Bid = bid;
+        Name = name;
+        Laenge = laenge;
+        Motorleistung = motorleistung;
+        Segelboot = segelboot;
+        Tiefgang = tiefgang;
+        Baujahr = baujahr;
+    }
 }
