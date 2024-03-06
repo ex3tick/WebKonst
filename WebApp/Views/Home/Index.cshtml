@@ -25,30 +25,31 @@
             <div class="card">
                 <div class="card-body">
                     <table class="table table-bordered">
+                        <a href="/home/create" class="btn btn-primary" title="Erstellen">Erstellen</a>
                         <thead>
-                            <tr>
-                                <th>BId</th>
-                                <th>Bezeichung</th>
-                                <th>Laenge</th>
-                                <th>Ist Segler</th>
-                                <th>Aktionen</th>
-                            </tr>
+                        <tr>
+                            <th>BId</th>
+                            <th>Bezeichung</th>
+                            <th>Laenge</th>
+                            <th>Ist Segler</th>
+                            <th>Aktionen</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            @foreach(var item in Model)
-                            {
-                                <tr>
-                                    <td>@item.Bid</td>
-                                    <td>@item.Name</td>
-                                    <td>@item.Laenge</td>
-                                    <td>@(item.Segelboot ? "⛵" : "🚤")</td>
-                                    <td>
-                                        <a href="/home/delete?bid=@item.Bid" class="btn btn-danger" title="Löschen">Löschen</a>
-                                        <a href="/home/detail?bid=@item.Bid" class="btn btn-primary" title="Detailansicht">Detailansicht</a>
-                                        <a href="/home/edit?bid=@item.Bid" class="btn btn-warning" title="Bearbeiten">Bearbeiten</a>
-                                    </td>
-                                </tr>
-                            }
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Bid</td>
+                                <td>@item.Name</td>
+                                <td>@item.Laenge</td>
+                                <td>@(item.Segelboot ? "⛵" : "🚤")</td>
+                                <td>
+                                    <a href="/home/delete?bid=@item.Bid" class="btn btn-danger" title="Löschen">Löschen</a>
+                                    <a href="/home/detail?bid=@item.Bid" class="btn btn-primary" title="Detailansicht">Detailansicht</a>
+                                    <a href="/home/edit?bid=@item.Bid" class="btn btn-warning" title="Bearbeiten">Bearbeiten</a>
+                                </td>
+                            </tr>
+                        }
                         </tbody>
                     </table>
                 </div>
