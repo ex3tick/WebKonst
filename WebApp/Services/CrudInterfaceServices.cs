@@ -105,7 +105,7 @@ public class CrudInterfaceServices : CRUDInterface
     public string ConnectionString()
     {
         string connectionString = "";
-        connectionString = File.ReadAllText("C:\\Users\\ex3ti\\RiderProjects\\WebKonst\\WebApp\\Config.txt");
+        connectionString = File.ReadAllText("Config.txt");
         string dbPath = $"Data Source={connectionString}";
         return dbPath;
     }
