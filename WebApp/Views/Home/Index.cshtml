@@ -1,82 +1,64 @@
-﻿@model List<WebApp.Models.Artikel>
-<!DOCTYPE html>
-
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width"/>
     <title>Index</title>
+    <!-- Bootstrap CSS-Link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .header-img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
-<a href="/home/zweite">
-    <img src="/Images/ex3.jpeg">
-</a>
-<table border="1">
-    <tr>
-        <th>AId</th>
-        <th>Bezeichung</th>
-        <th>Kosten</th>
-        <th>Vorrätig</th>
-        <th>&nbsp;</th>
-    </tr>
-    <tr>
-        <td>1039</td>
-        <td>Hammer</td>
-        <td>10,59€</td>
-        <td>❌</td>
-        <td>
-            <a href="/home/delete?aid=1039" title="Löschen">🚮</a>
-            <a href="/home/edit?aid=1039" title="ditail ansicht">🔍</a>
-            <a href="/home/detail?aid=1039" title="bearbeiten">🖊️</a>
-        </td>
-    </tr>
-    <tr>
-        <td>1023</td>
-        <td>Schraubendrher</td>
-        <td>5,59€</td>
-        <td>✅</td>
-        <td>
-            <a href="/home/delete?aid=1023" title="Löschen">🚮</a>
-            <a href="/home/edit?aid=1023" title="ditail ansicht">🔍</a>
-            <a href="/home/detail?aid=1023" title="bearbeiten">🖊️</a>
-        </td>
-    </tr>
-    <tr>
-        <td>3829</td>
-        <td>Bohrmaschine</td>
-        <td>59,59€</td>
-        <td>✅</td>
-        <td>
-            <a href="/home/delete?aid=3829" title="Löschen">🚮</a>
-            <a href="/home/edit?aid=3829" title="ditail ansicht">🔍</a>
-            <a href="/home/detail?aid=3829" title="bearbeiten">🖊️</a>
-        </td>
-    </tr>
-</table>
-<br/>
-<br/>
-<table border="1">
-    <tr>
-        <th>AId</th>
-        <th>Bezeichung</th>
-        <th>Kosten</th>
-        <th>Vorrätig</th>
-        <th>&nbsp;</th>
-    </tr>
-@foreach(var item in Model)
-{
-    <tr>
-        <td>@item.Aid</td>
-        <td>@item.Bezeichnung</td>
-        <td>@item.Preis</td>
-        <td>@item.Vorrätig</td>
-        <td>
-            <a href="/home/delete?aid=@item.Aid" title="Löschen">🚮</a>
-            <a href="/home/edit?aid=@item.Aid" title="ditail ansicht">🔍</a>
-            <a href="/home/detail?aid=@item.Aid" title="bearbeiten">🖊️</a>
-        </td>
-    </tr>
-}
+    <div class="container-fluid p-0">
+        <!-- Header mit dem Bild -->
+        <header>
+            <img src="/Images/xHeader_SHW_Test,P20,P285,P29.jpg.pagespeed.ic.ow5-fQukM2.jpg" class="header-img" alt="Header-Bild">
+        </header>
 
-</table>
+       
+        <div class="container mt-4">
+         
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>BId</th>
+                                <th>Bezeichung</th>
+                                <th>Laenge</th>
+                                <th>Ist Segler</th>
+                                <th>Aktionen</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Bid</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Laenge</td>
+                                    <td>@(item.Segelboot ? "⛵" : "🚤")</td>
+                                    <td>
+                                        <a href="/home/delete?bid=@item.Bid" class="btn btn-danger" title="Löschen">Löschen</a>
+                                        <a href="/home/detail?bid=@item.Bid" class="btn btn-primary" title="Detailansicht">Detailansicht</a>
+                                        <a href="/home/edit?bid=@item.Bid" class="btn btn-warning" title="Bearbeiten">Bearbeiten</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.1" />
   </ItemGroup>
 
@@ -14,6 +15,25 @@
     <Content Update="wwwroot\Images\ex3.jpeg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="schuleSchief - Kopie\.idea\.gitignore" />
+    <Content Include="schuleSchief - Kopie\.idea\dataSources.local.xml" />
+    <Content Include="schuleSchief - Kopie\.idea\dataSources.xml" />
+    <Content Include="schuleSchief - Kopie\.idea\dataSources\c0ab6e96-6cc9-40b8-92af-8ed6706c28e6.xml" />
+    <Content Include="schuleSchief - Kopie\.idea\dataSources\c0ab6e96-6cc9-40b8-92af-8ed6706c28e6\storage_v2\_src_\schema\main.uQUzAA.meta" />
+    <Content Include="schuleSchief - Kopie\.idea\modules.xml" />
+    <Content Include="schuleSchief - Kopie\.idea\schuleSchief.iml" />
+    <Content Include="schuleSchief - Kopie\.idea\workspace.xml" />
+    <Content Remove="wwwroot\Images\blauwasser_hafen_england_portsmouth_header.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="schuleSchief - Kopie\identifier.sqlite">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Admin\Index2.cshtml" />
   </ItemGroup>
 
 </Project>

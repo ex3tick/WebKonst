@@ -6,7 +6,7 @@ namespace WebApp
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            //Konfiguration der Anwendung als MVC-Anwendung
+         
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();

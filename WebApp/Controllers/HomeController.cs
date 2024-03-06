@@ -1,30 +1,38 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApp.Models;
+using WebApp.Services;
 
 namespace WebApp.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly CrudInterfaceServices _service = new CrudInterfaceServices();
         public IActionResult Index()
         {
-            List<Artikel> artikelListe = new List<Artikel>();
-            artikelListe.Add(new Artikel{Aid = 1, Bezeichnung = "Schraube", Preis = 0.10, Vorrätig = true});
-            artikelListe.Add(new Artikel{Aid = 2, Bezeichnung = "Mutter", Preis = 0.05, Vorrätig = true});
-            artikelListe.Add(new Artikel{Aid = 3, Bezeichnung = "Blech", Preis = 1.50, Vorrätig = false});
-            return View(artikelListe);
+            List<Boot>  Boote = _service.GetAllBoats();
+            return View(Boote);
         }
-        public IActionResult Detail(int aid)
-        {
-           
-            return View();
-        }
-        public IActionResult Delete(int aid)
+        public IActionResult Create()
         {
             return View();
         }
-        public IActionResult Edit(int aid)
+        public IActionResult Detail(int bid)
         {
+          
+           Boot boot = _service.GetBoatById(bid);
+            
+            return View(boot);
+        }
+        public IActionResult Delete(int bid)
+        {
+            _service.DeleteBoat(bid);
             return View();
+        }
+        public IActionResult Edit(int bid)
+        {
+            Boot boot = _service.GetBoatById(bid);
+            
+            return View(boot);
         }
     }
 }
