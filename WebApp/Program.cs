@@ -12,7 +12,7 @@ namespace WebApp
             var app = builder.Build();
 
             //app.MapGet("/", () => "Hello World!");
-
+            app.UseStaticFiles();
             app.UseRouting();
             app.MapControllerRoute(
                                name: "default",

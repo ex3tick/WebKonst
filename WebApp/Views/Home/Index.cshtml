@@ -1,12 +1,82 @@
-﻿
+﻿@model List<WebApp.Models.Artikel>
 <!DOCTYPE html>
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width"/>
     <title>Index</title>
 </head>
 <body>
-    <h1 style="color:aquamarine">Erste tolle MVC-Webanwendung...Heureka!!! 👌</h1>
+<a href="/home/zweite">
+    <img src="/Images/ex3.jpeg">
+</a>
+<table border="1">
+    <tr>
+        <th>AId</th>
+        <th>Bezeichung</th>
+        <th>Kosten</th>
+        <th>Vorrätig</th>
+        <th>&nbsp;</th>
+    </tr>
+    <tr>
+        <td>1039</td>
+        <td>Hammer</td>
+        <td>10,59€</td>
+        <td>❌</td>
+        <td>
+            <a href="/home/delete?aid=1039" title="Löschen">🚮</a>
+            <a href="/home/edit?aid=1039" title="ditail ansicht">🔍</a>
+            <a href="/home/detail?aid=1039" title="bearbeiten">🖊️</a>
+        </td>
+    </tr>
+    <tr>
+        <td>1023</td>
+        <td>Schraubendrher</td>
+        <td>5,59€</td>
+        <td>✅</td>
+        <td>
+            <a href="/home/delete?aid=1023" title="Löschen">🚮</a>
+            <a href="/home/edit?aid=1023" title="ditail ansicht">🔍</a>
+            <a href="/home/detail?aid=1023" title="bearbeiten">🖊️</a>
+        </td>
+    </tr>
+    <tr>
+        <td>3829</td>
+        <td>Bohrmaschine</td>
+        <td>59,59€</td>
+        <td>✅</td>
+        <td>
+            <a href="/home/delete?aid=3829" title="Löschen">🚮</a>
+            <a href="/home/edit?aid=3829" title="ditail ansicht">🔍</a>
+            <a href="/home/detail?aid=3829" title="bearbeiten">🖊️</a>
+        </td>
+    </tr>
+</table>
+<br/>
+<br/>
+<table border="1">
+    <tr>
+        <th>AId</th>
+        <th>Bezeichung</th>
+        <th>Kosten</th>
+        <th>Vorrätig</th>
+        <th>&nbsp;</th>
+    </tr>
+@foreach(var item in Model)
+{
+    <tr>
+        <td>@item.Aid</td>
+        <td>@item.Bezeichnung</td>
+        <td>@item.Preis</td>
+        <td>@item.Vorrätig</td>
+        <td>
+            <a href="/home/delete?aid=@item.Aid" title="Löschen">🚮</a>
+            <a href="/home/edit?aid=@item.Aid" title="ditail ansicht">🔍</a>
+            <a href="/home/detail?aid=@item.Aid" title="bearbeiten">🖊️</a>
+        </td>
+    </tr>
+}
+
+</table>
 </body>
 </html>
