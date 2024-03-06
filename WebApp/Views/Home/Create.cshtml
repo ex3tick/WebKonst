@@ -32,14 +32,13 @@
     <script>
         window.onload = function() {
             document.getElementById('CreateButton').addEventListener('click', function() {
-            
                 var name = document.getElementById('NameInput').value;
                 var laenge = parseFloat(document.getElementById('LaengeInput').value);
-                var istSegler = document.getElementById('IstSeglerInput').checked? 1:0;
+                var istSegler = document.getElementById('IstSeglerInput').checked ? 1 : 0;
                 var motorleistung = parseInt(document.getElementById('MotorleistungInput').value);
                 var tiefgang = parseFloat(document.getElementById('TiefgangInput').value);
                 var baujahr = document.getElementById('BaujahrInput').value;
-
+        
                 var boat = {
                     Name: name,
                     Laenge: laenge,
@@ -48,7 +47,7 @@
                     Tiefgang: tiefgang,
                     Baujahr: baujahr
                 };
-
+        
                 fetch('/Home/AddBoat', {
                     method: 'POST',
                     headers: {
@@ -64,13 +63,14 @@
                 })
                 .then(data => {
                     console.log('Success:', data);
-                    // Hier kannst du nach dem erfolgreichen Hinzufügen des Bootes weitere Aktionen durchführen, z.B. eine Weiterleitung oder Aktualisierung der Anzeige.
+                    window.location.href = "/Home/Index"; 
                 })
                 .catch((error) => {
                     console.error('Error:', error);
                 });
             });
-        }
+        };
+
     </script>
 
 </body>

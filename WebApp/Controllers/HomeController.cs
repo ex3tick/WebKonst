@@ -55,6 +55,9 @@ namespace WebApp.Controllers
                 
                 int insertedID = _service.InsertBoat(boat);
                 return Json(new { id = insertedID });
+
+                
+                
             }
             catch (Exception ex)
             {
