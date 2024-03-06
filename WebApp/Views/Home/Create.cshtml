@@ -1,34 +1,53 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boat Form</title>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
 
-    <form id="boatForm">
-        <label for="NameInput">Name:</label>
-        <input type="text" id="NameInput" required><br>
-
-        <label for="LaengeInput">Länge:</label>
-        <input type="number" id="LaengeInput" required><br>
-
-        <label for="IstSeglerInput">Ist Segler:</label>
-        <input type="checkbox" id="IstSeglerInput"><br>
-
-        <label for="MotorleistungInput">Motorleistung:</label>
-        <input type="number" id="MotorleistungInput" required><br>
-
-        <label for="TiefgangInput">Tiefgang:</label>
-        <input type="number" id="TiefgangInput" required><br>
-
-        <label for="BaujahrInput">Baujahr:</label>
-        <input type="text" id="BaujahrInput" required><br>
-
-        <button type="button" id="CreateButton">Create Boat</button>
-    </form>
-
+      <div class="container mt-5">
+            <form id="boatForm">
+                <div class="form-group">
+                    <label for="NameInput">Name:</label>
+                    <input type="text" class="form-control" id="NameInput" required>
+                </div>
+    
+                <div class="form-group">
+                    <label for="LaengeInput">Länge:</label>
+                    <input type="number" class="form-control" id="LaengeInput" required>
+                </div>
+    
+                <div class="form-group">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="IstSeglerInput">
+                        <label class="form-check-label" for="IstSeglerInput">Ist Segler</label>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label for="MotorleistungInput">Motorleistung:</label>
+                    <input type="number" class="form-control" id="MotorleistungInput" required>
+                </div>
+    
+                <div class="form-group">
+                    <label for="TiefgangInput">Tiefgang:</label>
+                    <input type="number" class="form-control" id="TiefgangInput" required>
+                </div>
+    
+                <div class="form-group">
+                    <label for="BaujahrInput">Baujahr:</label>
+                    <input type="text" class="form-control" id="BaujahrInput" required>
+                </div>
+    
+                <button type="button" class="btn btn-primary" id="CreateButton">Create Boat</button>
+            </form>
+        </div>
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
         window.onload = function() {
             document.getElementById('CreateButton').addEventListener('click', function() {
