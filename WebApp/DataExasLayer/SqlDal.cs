@@ -3,8 +3,14 @@ using WebApp.Models;
 
 namespace WebApp.Services;
 
-public class CrudInterfaceServices : CRUDInterface
+public class SqlDal : CRUDInterface
 {
+   // private readonly SqliteConnection _conString;
+   //später mit alter mehtode ersetzen
+   //  public SqlDal(SqliteConnection conString)
+   //  {
+   //      _conString = conString;
+   //  }
     public List<Boot> GetAllBoats()
     {
         List<Boot> Boote = new List<Boot>();

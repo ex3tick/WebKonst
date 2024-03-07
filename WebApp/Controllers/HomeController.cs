@@ -8,7 +8,7 @@ namespace WebApp.Controllers
     [Controller]
     public class HomeController : Controller
     {
-        private readonly CrudInterfaceServices _service = new CrudInterfaceServices();
+        private readonly SqlDal _service = new SqlDal();
 
         public IActionResult Index()
         {
