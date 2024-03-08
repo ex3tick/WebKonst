@@ -18,4 +18,30 @@ public class Mapping
             Baujahr = reader.GetString(6)
         };
     }
+    public static DtoInsert DataToDtoInsert(string name, double laenge, int? motorleistung, bool segelboot, double tiefgang, string baujahr)
+    {
+        return new DtoInsert
+        {
+            Name = name,
+            Laenge = laenge,
+            Motorleistung = motorleistung,
+            Segelboot = segelboot,
+            Tiefgang = tiefgang,
+            Baujahr = baujahr
+        };
+    }
+    public static Boot MappingEditBoot(int bid, string name, double laenge, int? motorleistung, bool segelboot, double tiefgang, string baujahr)
+    {
+        return new Boot
+        {
+            Bid = bid,
+            Name = name,
+            Laenge = laenge,
+            Motorleistung = motorleistung,
+            Segelboot = segelboot,
+            Tiefgang = tiefgang,
+            Baujahr = baujahr
+        };
+    }
+    
 }

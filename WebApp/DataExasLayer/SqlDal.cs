@@ -24,7 +24,6 @@ public class SqlDal : CRUDInterface
             while (reader.Read())
             {
                 Boot boot = Mapping.MappingBoot(reader);
-
                 Boote.Add(boot);
             }
         }
@@ -77,7 +76,7 @@ public class SqlDal : CRUDInterface
             connection.Open();
 
             string query =
-                "UPDATE Hafen SET Name = @Name, Laenge = @Laenge, Motorleistung = @Motorleistung, Segelboot = @Segelboot, Tiefgang = @Tiefgang, Baujahr = @Baujahr WHERE bid = @Bid";
+                "UPDATE Hafen SET name = @Name, laenge = @Laenge, motoleistung = @Motorleistung, ist_segel = @Segelboot, tiefgang = @Tiefgang, baujahr = @Baujahr WHERE bid = @Bid";
 
             using (SqliteCommand command = new SqliteCommand(query, connection))
             {
@@ -117,6 +116,29 @@ public class SqlDal : CRUDInterface
         }
 
         return boot.Bid;
+    }
+
+    public int Insert2(DtoInsert boot)
+    {
+        string connectionString = ConnectionString();
+        using (SqliteConnection connection = new SqliteConnection(connectionString))
+        {
+            connection.Open();
+            string query =
+                "INSERT INTO Hafen (name, laenge,  motoleistung, ist_segel, tiefgang, baujahr) VALUES (@Name, @Laenge, @Motorleistung, @Segelboot, @Tiefgang, @Baujahr)";
+            using (SqliteCommand command = new SqliteCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@Name", boot.Name);
+                command.Parameters.AddWithValue("@Laenge", boot.Laenge);
+                command.Parameters.AddWithValue("@Motorleistung", boot.Motorleistung);
+                command.Parameters.AddWithValue("@Segelboot", boot.Segelboot);
+                command.Parameters.AddWithValue("@Tiefgang", boot.Tiefgang);
+                command.Parameters.AddWithValue("@Baujahr", boot.Baujahr);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        return 0;
     }
 
     public string ConnectionString()
