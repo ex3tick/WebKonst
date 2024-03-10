@@ -10,5 +10,5 @@ namespace WebApp.DataExasLayer;
 
 public class Helper
 {
-    
+  
 }

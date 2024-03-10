@@ -118,10 +118,8 @@ namespace WebApp.Controllers
             {
                 using var reader = new StreamReader(Request.Body);
                 var body = await reader.ReadToEndAsync();
-
-
+                
                 var boat = JsonSerializer.Deserialize<Boot>(body);
-
                 
                 int insertedID = _service.InsertBoat(boat);
                 return Json(new { id = insertedID });

@@ -24,6 +24,9 @@
     <Content Include="schuleSchief - Kopie\.idea\schuleSchief.iml" />
     <Content Include="schuleSchief - Kopie\.idea\workspace.xml" />
     <Content Remove="wwwroot\Images\blauwasser_hafen_england_portsmouth_header.jpg" />
+    <Content Update="wwwroot\Images\neub.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
